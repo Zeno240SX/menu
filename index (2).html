@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pesan Menu Cafe</title>
+  <style>
+    /* Reset CSS */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #444;
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      color: #555;
+      font-size: 1.8em;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+    }
+
+    .menu-category {
+      margin-bottom: 30px;
+    }
+
+    .menu-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+.menu-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.menu-item {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 250px; /* Tetapkan lebar tetap */
+  min-height: 300px; /* Pastikan tinggi konsisten */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.menu-item img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.menu-item h3, 
+.menu-item p, 
+.menu-item button {
+  margin-top: auto;
+}
+
+
+    .menu-item button {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1em;
+      transition: background-color 0.3s ease;
+    }
+
+    .menu-item button:hover {
+      background-color: #218838;
+    }
+
+    #cart {
+      margin-top: 40px;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    #cart h2 {
+      margin-bottom: 20px;
+    }
+
+    #cart-items {
+      list-style: none;
+    }
+
+    #cart-items li {
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    #cart-items li:last-child {
+      border-bottom: none;
+    }
+
+    #total {
+      font-size: 1.5em;
+      font-weight: bold;
+      text-align: right;
+      margin-top: 20px;
+      color: #28a745;
+    }
+
+    #submit-order {
+      display: block;
+      width: 100%;
+      max-width: 200px;
+      margin: 20px auto;
+      padding: 15px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1.2em;
+      transition: background-color 0.3s ease;
+    }
+
+    #submit-order:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>Pesan Menu Cafe</h1>
+
+  <!-- Kategori Coffee -->
+
+  <section class="menu-category">
+    <h2>Coffee</h2>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <img src="https://c4.wallpaperflare.com/wallpaper/295/163/719/anime-anime-boys-picture-in-picture-kimetsu-no-yaiba-kamado-tanjir%C5%8D-hd-wallpaper-preview.jpg" alt="Americano">
+        <h3>Americano</h3>
+        <p>Rp 10.000</p>
+        <button onclick="addItem('Americano', 10000)">Pesan</button>
+      </div>
+      <div class="menu-item">
+        <img src="https://c4.wallpaperflare.com/wallpaper/305/537/127/middle-earth-shadow-of-mordor-eagle-video-games-fire-wallpaper-preview.jpg" alt="V60">
+        <h3>V60</h3>
+        <p>Rp 18.000</p>
+        <button onclick="addItem('V60', 18000)">Pesan</button>
+      </div>
+      <div class="menu-item">
+        <img src="https://via.placeholder.com/300x150.png?text=Tubruk" alt="Tubruk">
+        <h3>Tubruk</h3>
+        <p>Rp 10.000</p>
+        <button onclick="addItem('Tubruk', 10000)">Pesan</button>
+      </div>
+      <div class="menu-item">
+        <img src="https://via.placeholder.com/300x150.png?text=Kopi+Susu" alt="Kopi Susu">
+        <h3>Kopi Susu</h3>
+        <p>Rp 13.000</p>
+        <button onclick="addItem('Kopi Susu', 13000)">Pesan</button>
+      </div>
+      <div class="menu-item">
+        <img src="https://via.placeholder.com/300x150.png?text=Kopi+Gula+Aren" alt="Kopi Gula Aren">
+        <h3>Kopi Gula Aren</h3>
+        <p>Rp 15.000</p>
+        <button onclick="addItem('Kopi Gula Aren', 15000)">Pesan</button>
+      </div>
+      <div class="menu-item">
+        <img src="https://via.placeholder.com/300x150.png?text=Vanilla+Coffee" alt="Vanilla Coffee">
+        <h3>Vanilla Coffee</h3>
+        <p>Rp 15.000</p>
+        <button onclick="addItem('Vanilla Coffee', 15000)">Pesan</button>
+      </div>
+      <div class="menu-item">
+        <img src="https://via.placeholder.com/300x150.png?text=Hazelnut+Coffee" alt="Hazelnut Coffee">
+        <h3>Hazelnut Coffee</h3>
+        <p>Rp 15.000</p>
+        <button onclick="addItem('Hazelnut Coffee', 15000)">Pesan</button>
+      </div>
+      <div class="menu-item">
+        <img src="https://via.placeholder.com/300x150.png?text=Almond+Coffee" alt="Almond Coffee">
+        <h3>Almond Coffee</h3>
+        <p>Rp 15.000</p>
+        <button onclick="addItem('Almond Coffee', 15000)">Pesan</button>
+      </div>
+      <div class="menu-item">
+        <img src="https://via.placeholder.com/300x150.png?text=Banana+Coffee" alt="Banana Coffee">
+        <h3>Banana Coffee</h3>
+        <p>Rp 15.000</p>
+        <button onclick="addItem('Banana Coffee', 15000)">Pesan</button>
+      </div>
+      <div class="menu-item">
+        <img src="https://via.placeholder.com/300x150.png?text=Coffee+Latte" alt="Coffee Latte">
+        <h3>Coffee Latte</h3>
+        <p>Rp 13.000</p>
+        <button onclick="addItem('Coffee Latte', 13000)">Pesan</button>
+      </div>
+      <div class="menu-item">
+        <img src="https://via.placeholder.com/300x150.png?text=Cafe+Mocha" alt="Cafe Mocha">
+        <h3>Cafe Mocha</h3>
+        <p>Rp 17.000</p>
+        <button onclick="addItem('Cafe Mocha', 17000)">Pesan</button>
+      </div>
+      <div class="menu-item">
+        <img src="https://via.placeholder.com/300x150.png?text=Caramel+Macchiato" alt="Caramel Macchiato">
+        <h3>Caramel Macchiato</h3>
+        <p>Rp 17.000</p>
+        <button onclick="addItem('Caramel Macchiato', 17000)">Pesan</button>
+      </div>
+      <div class="menu-item">
+        <img src="https://via.placeholder.com/300x150.png?text=Street+Coffee" alt="Street Coffee">
+        <h3>Street Coffee</h3>
+        <p>Rp 17.000</p>
+        <button onclick="addItem('Street Coffee', 17000)">Pesan</button>
+      </div>
+      <div class="menu-item">
+        <img src="https://via.placeholder.com/300x150.png?text=Cafe+Latte" alt="Cafe Latte">
+        <h3>Cafe Latte</h3>
+        <p>Rp 17.000</p>
+        <button onclick="addItem('Cafe Latte', 17000)">Pesan</button>
+      </div>
+      <div class="menu-item">
+        <img src="https://via.placeholder.com/300x150.png?text=Butterscotch" alt="Butterscotch">
+        <h3>Butterscotch</h3>
+        <p>Rp 17.000</p>
+        <button onclick="addItem('Butterscotch', 17000)">Pesan</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kategori Smoothies -->
+  <section class="menu-category">
+    <h2>Smoothies</h2>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <img src="https://via.placeholder.com/300x150.png?text=Choco" alt="Choco">
+        <h3>Choco</h3>
+        <p>Rp 10.000</p>
+        <button onclick="addItem('Choco', 10000)">Pesan</button>
+      </div>
+      <div class="menu-item">
+        <img src="https://via.placeholder.com/300x150.png?text=Taro" alt="Taro">
+        <h3>Taro</h3>
+        <p>Rp 10.000</p>
+        <button onclick="addItem('Taro', 10000)">Pesan</button>
+      </div>
+      <div class="menu-item">
+        <img src="https://via.placeholder.com/300x150.png?text=Matcha" alt="Matcha">
+        <h3>Matcha</h3>
+        <p>Rp 10.000</p>
+        <button onclick="addItem('Matcha', 10000)">Pesan</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kategori Milkshakes -->
+  <section class="menu-category">
+    <h2>Milkshakes</h2>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <img src="https://via.placeholder.com/300x150.png?text=Pandan+Milkshake" alt="Pandan Milkshake">
+        <h3>Pandan Milkshake</h3>
+        <p>Rp 15.000</p>
+        <button onclick="addItem('Pandan Milkshake', 15000)">Pesan</button>
+      </div>
+      <div class="menu-item">
+        <img src="https://via.placeholder.com/300x150.png?text=Strawberry+Milkshake" alt="Strawberry Milkshake">
+        <h3>Strawberry Milkshake</h3>
+        <p>Rp 15.000</p>
+        <button onclick="addItem('Strawberry Milkshake', 15000)">Pesan</button>
+      </div>
+      <div class="menu-item">
+        <img src="https://via.placeholder.com/300x150.png?text=Melon+Milkshake" alt="Melon Milkshake">
+        <h3>Melon Milkshake</h3>
+        <p>Rp 15.000</p>
+        <button onclick="addItem('Melon Milkshake', 15000)">Pesan</button>
+      </div>
+      <div class="menu-item">
+        <img src="https://via.placeholder.com/300x150.png?text=Mango+Milkshake" alt="Mango Milkshake">
+        <h3>Mango Milkshake</h3>
+        <p>Rp 15.000</p>
+        <button onclick="addItem('Mango Milkshake', 15000)">Pesan</button>
+      </div>
+      <div class="menu-item">
+        <img src="https://via.placeholder.com/300x150.png?text=Vanilla+Milkshake" alt="Vanilla Milkshake">
+        <h3>Vanilla Milkshake</h3>
+        <p>Rp 15.000</p>
+        <button onclick="addItem('Vanilla Milkshake', 15000)">Pesan</button>
+      </div>
+      <div class="menu-item">
+        <img src="https://via.placeholder.com/300x150.png?text=Coklat+Milkshake" alt="Coklat Milkshake">
+        <h3>Coklat Milkshake</h3>
+        <p>Rp 15.000</p>
+        <button onclick="addItem('Coklat Milkshake', 15000)">Pesan</button>
+      </div>
+      <div class="menu-item">
+        <img src="https://via.placeholder.com/300x150.png?text=Pinky+Sweet" alt="Pinky Sweet">
+        <h3>Pinky Sweet</h3>
+        <p>Rp 15.000</p>
+        <button onclick="addItem('Pinky Sweet', 15000)">Pesan</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kategori Mocktails -->
+  <section class="menu-category">
+    <h2>Mocktails</h2>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <img src="https://via.placeholder.com/300x150.png?text=Orange+Squash" alt="Orange Squash">
+        <h3>Orange Squash</h3>
+        <p>Rp 13.000</p>
+        <button onclick="addItem('Orange Squash', 13000)">Pesan</button>
+      </div>
+      <div class="menu-item">
+        <img src="https://via.placeholder.com/300x150.png?text=Strawberry+Squash" alt="Strawberry Squash">
+        <h3>Strawberry Squash</h3>
+        <p>Rp 13.000</p>
+        <button onclick="addItem('Strawberry Squash', 13000)">Pesan</button>
+      </div>
+      <div class="menu-item">
+        <img src="https://via.placeholder.com/300x150.png?text=Mango+Squash" alt="Mango Squash">
+        <h3>Mango Squash</h3>
+        <p>Rp 13.000</p>
+        <button onclick="addItem('Mango Squash', 13000)">Pesan</button>
+      </div>
+      <div class="menu-item">
+        <img src="https://via.placeholder.com/300x150.png?text=Summer+Soda" alt="Summer Soda">
+        <h3>Summer Soda</h3>
+        <p>Rp 15.000</p>
+        <button onclick="addItem('Summer Soda', 15000)">Pesan</button>
+      </div>
+      <div class="menu-item">
+        <img src="https://via.placeholder.com/300x150.png?text=Deep+Ocean+Blue" alt="Deep Ocean Blue">
+        <h3>Deep Ocean Blue</h3>
+        <p>Rp 15.000</p>
+        <button onclick="addItem('Deep Ocean Blue', 15000)">Pesan</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kategori Tea Series -->
+  <section class="menu-category">
+    <h2>Tea Series</h2>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <img src="https://via.placeholder.com/300x150.png?text=Teh+Manis+/+Teh+Tawar" alt="Teh Manis / Teh Tawar">
+        <h3>Teh Manis / Teh Tawar</h3>
+        <p>Rp 5.000</p>
+        <button onclick="addItem('Teh Manis / Teh Tawar', 5000)">Pesan</button>
+      </div>
+      <div class="menu-item">
+        <img src="https://via.placeholder.com/300x150.png?text=Lemon+Tea" alt="Lemon Tea">
+        <h3>Lemon Tea</h3>
+        <p>Rp 7.000</p>
+        <button onclick="addItem('Lemon Tea', 7000)">Pesan</button>
+      </div>
+      <div class="menu-item">
+        <img src="https://via.placeholder.com/300x150.png?text=Rosella" alt="Rosella">
+        <h3>Rosella</h3>
+        <p>Rp 10.000</p>
+        <button onclick="addItem('Rosella', 10000)">Pesan</button>
+      </div>
+      <div class="menu-item">
+        <img src="https://via.placeholder.com/300x150.png?text=Strawberry+Tea" alt="Strawberry Tea">
+        <h3>Strawberry Tea</h3>
+        <p>Rp 12.000</p>
+        <button onclick="addItem('Strawberry Tea', 12000)">Pesan</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kategori Snacks -->
+  <section class="menu-category">
+    <h2>Snacks</h2>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <img src="https://via.placeholder.com/300x150.png?text=Gerupuk+Wortel" alt="Gerupuk Wortel">
+        <h3>Gerupuk Wortel</h3>
+        <p>Rp 10.000</p>
+        <button onclick="addItem('Gerupuk Wortel', 10000)">Pesan</button>
+      </div>
+      <div class="menu-item">
+        <img src="https://via.placeholder.com/300x150.png?text=Ubi+Bakar" alt="Ubi Bakar">
+        <h3>Ubi Bakar</h3>
+        <p>Rp 10.000</p>
+        <button onclick="addItem('Ubi Bakar', 10000)">Pesan</button>
+      </div>
+      <div class="menu-item">
+        <img src="https://via.placeholder.com/300x150.png?text=Onion+Ring" alt="Onion Ring">
+        <h3>Onion Ring</h3>
+        <p>Rp 12.000</p>
+        <button onclick="addItem('Onion Ring', 12000)">Pesan</button>
+      </div>
+      <div class="menu-item">
+        <img src="https://via.placeholder.com/300x150.png?text=Spicy+Corn" alt="Spicy Corn">
+        <h3>Spicy Corn</h3>
+        <p>Rp 13.000</p>
+        <button onclick="addItem('Spicy Corn', 13000)">Pesan</button>
+      </div>
+      <div class="menu-item">
+        <img src="https://via.placeholder.com/300x150.png?text=Sate+Taichan" alt="Sate Taichan">
+        <h3>Sate Taichan</h3>
+        <p>Rp 18.000</p>
+        <button onclick="addItem('Sate Taichan', 18000)">Pesan</button>
+      </div>
+      <div class="menu-item">
+        <img src="https://via.placeholder.com/300x150.png?text=Nasi+Goreng" alt="Nasi Goreng">
+        <h3>Nasi Goreng</h3>
+        <p>Rp 15.000</p>
+        <button onclick="addItem('Nasi Goreng', 15000)">Pesan</button>
+      </div>
+      <div class="menu-item">
+        <img src="https://via.placeholder.com/300x150.png?text=Mie+Goreng" alt="Mie Goreng">
+        <h3>Mie Goreng</h3>
+        <p>Rp 15.000</p>
+        <button onclick="addItem('Mie Goreng', 15000)">Pesan</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kategori Food -->
+  <section class="menu-category">
+    <h2>Food</h2>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <img src="https://via.placeholder.com/300x150.png?text=Nasi+Dadar" alt="Nasi Dadar">
+        <h3>Nasi Dadar</h3>
+        <p>Rp 10.000</p>
+        <button onclick="addItem('Nasi Dadar', 10000)">Pesan</button>
+      </div>
+      <div class="menu-item">
+        <img src="https://via.placeholder.com/300x150.png?text=Nasi+Dadar+Geprek" alt="Nasi Dadar Geprek">
+        <h3>Nasi Dadar Geprek</h3>
+        <p>Rp 13.000</p>
+        <button onclick="addItem('Nasi Dadar Geprek', 13000)">Pesan</button>
+      </div>
+      <div class="menu-item">
+        <img src="https://via.placeholder.com/300x150.png?text=Nasi+Ayam+Geprek" alt="Nasi Ayam Geprek">
+        <h3>Nasi Ayam Geprek</h3>
+        <p>Rp 15.000</p>
+        <button onclick="addItem('Nasi Ayam Geprek', 15000)">Pesan</button>
+      </div>
+      <div class="menu-item">
+        <img src="https://via.placeholder.com/300x150.png?text=Nasi+Ayam+Bakar" alt="Nasi Ayam Bakar">
+        <h3>Nasi Ayam Bakar</h3>
+        <p>Rp 17.000</p>
+        <button onclick="addItem('Nasi Ayam Bakar', 17000)">Pesan</button>
+      </div>
+      <div class="menu-item">
+        <img src="https://via.placeholder.com/300x150.png?text=Ricebowl+Sauce+Teriyaki" alt="Ricebowl Sauce Teriyaki">
+        <h3>Ricebowl Sauce Teriyaki</h3>
+        <p>Rp 17.000</p>
+        <button onclick="addItem('Ricebowl Sauce Teriyaki', 17000)">Pesan</button>
+      </div>
+      <div class="menu-item">
+        <img src="https://via.placeholder.com/300x150.png?text=Ricebowl+Sauce+Blackpaper" alt="Ricebowl Sauce Blackpaper">
+        <h3>Ricebowl Sauce Blackpaper</h3>
+        <p>Rp 17.000</p>
+        <button onclick="addItem('Ricebowl Sauce Blackpaper', 17000)">Pesan</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kategori Additional Menu -->
+  <section class="menu-category">
+    <h2>Additional Menu</h2>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <img src="https://via.placeholder.com/300x150.png?text=Nasi" alt="Nasi">
+        <h3>Nasi</h3>
+        <p>Rp 3.000</p>
+        <button onclick="addItem('Nasi', 3000)">Pesan</button>
+      </div>
+      <div class="menu-item">
+        <img src="https://via.placeholder.com/300x150.png?text=Telur" alt="Telur">
+        <h3>Telur</h3>
+        <p>Rp 4.000</p>
+        <button onclick="addItem('Telur', 4000)">Pesan</button>
+      </div>
+      <div class="menu-item">
+        <img src="https://via.placeholder.com/300x150.png?text=Sosis/pcs,+Nuggets/pcs" alt="Sosis/pcs, Nuggets/pcs">
+        <h3>Sosis/pcs, Nuggets/pcs</h3>
+        <p>Rp 2.000</p>
+        <button onclick="addItem('Sosis/pcs, Nuggets/pcs', 2000)">Pesan</button>
+      </div>
+      <div class="menu-item">
+        <img src="https://via.placeholder.com/300x150.png?text=Air+Mineral" alt="Air Mineral">
+        <h3>Air Mineral</h3>
+        <p>Rp 5.000</p>
+        <button onclick="addItem('Air Mineral', 5000)">Pesan</button>
+      </div>
+      <div class="menu-item">
+        <img src="https://via.placeholder.com/300x150.png?text=Semua+Varian+Sambal" alt="Semua Varian Sambal">
+        <h3>Semua Varian Sambal</h3>
+        <p>Rp 1.000</p>
+        <button onclick="addItem('Semua Varian Sambal', 1000)">Pesan</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Keranjang Belanja -->
+  <div id="cart">
+    <h2>Pesanan Anda</h2>
+    <ul id="cart-items"></ul>
+    <div id="total">Total: Rp 0</div>
+    <button id="submit-order" onclick="submitOrder()">Kirim Pesanan</button>
+  </div>
+
+   <script>
+    let cart = [];
+    let total = 0;
+
+    function addItem(name, price) {
+      cart.push({ name, price });
+      updateCart();
+    }
+
+    function removeItem(index) {
+      cart.splice(index, 1); // Hapus item dari keranjang
+      updateCart();
+    }
+
+    function updateCart() {
+      const cartItems = document.getElementById('cart-items');
+      const totalElement = document.getElementById('total');
+      cartItems.innerHTML = '';
+      total = 0;
+
+      cart.forEach((item, index) => {
+        const li = document.createElement('li');
+        li.textContent = `${item.name} - Rp ${item.price}`;
+
+        // Tambahkan tombol hapus
+        const removeButton = document.createElement('button');
+        removeButton.textContent = 'X';
+        removeButton.classList.add('remove-item');
+        removeButton.onclick = () => removeItem(index); // Panggil fungsi removeItem dengan index
+
+        li.appendChild(removeButton);
+        cartItems.appendChild(li);
+        total += item.price;
+      });
+
+      totalElement.textContent = `Total: Rp ${total}`;
+    }
+
+    async function submitOrder() {
+      const response = await fetch('https://script.google.com/macros/s/AKfycbx_Qf8kvPf4K5JQF0AkMMy8ouXD-D-YoLjfBpufarRNrUnHLtk3Q6GMw2QlnPk99O9DkA/exec', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ items: cart, total }),
+      });
+
+      if (response.ok) {
+        alert('Pesanan berhasil dikirim!');
+        cart = [];
+        updateCart();
+      } else {
+        alert('Terjadi kesalahan. Silakan coba lagi.');
+      }
+    }
+  </script>
+</body>
+</html>
